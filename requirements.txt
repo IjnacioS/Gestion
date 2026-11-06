@@ -1,0 +1,11 @@
+# Manipulación y análisis de datos
+pandas>=2.0.0
+numpy>=1.24.0
+
+# Visualización de datos
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Machine Learning, preprocesamiento y serialización
+scikit-learn>=1.2.0
+joblib>=1.3.0

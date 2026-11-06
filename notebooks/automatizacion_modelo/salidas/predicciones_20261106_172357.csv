@@ -1,0 +1,6 @@
+Age,Grade,SES_Quartile,StudyHours,AttendanceRate,InternetAccess,ParentSupport,Extracurricular,ParentalEducation,puntaje_predicho,rango_min,rango_max,requiere_apoyo
+17,12,3,1.4467003464698793,0.9627347588539124,1,1,1,Bachelors+,86.0,80.3,91.7,False
+16,11,2,0.999894380569458,0.8999776244163513,1,0,1,HS,74.7,69.0,80.4,False
+16,11,2,0.5520608365535736,0.8371848464012146,0,0,0,HS,64.0,58.2,69.7,True
+15,10,3,0.5520608365535736,0.9627347588539124,1,1,0,SomeCollege,83.6,77.9,89.3,False
+17,12,1,1.4467003464698793,0.8371848464012146,0,0,1,<HS,66.6,60.9,72.3,True
