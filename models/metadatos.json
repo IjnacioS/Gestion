@@ -1,0 +1,17 @@
+{
+  "modelo": "Gradient Boosting",
+  "variables": [
+    "Age",
+    "Grade",
+    "SES_Quartile",
+    "StudyHours",
+    "AttendanceRate",
+    "InternetAccess",
+    "ParentSupport",
+    "Extracurricular",
+    "ParentalEducation"
+  ],
+  "rmse_validacion": 5.702121448087603,
+  "umbral_apoyo": 68.24698638916016,
+  "version_sklearn": "1.9.1"
+}

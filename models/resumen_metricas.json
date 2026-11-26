@@ -1,0 +1,113 @@
+{
+  "modelo_ganador": "Gradient Boosting",
+  "algoritmo": "HistGradientBoostingRegressor",
+  "variable_objetivo": "TestScore_Math",
+  "escala_puntaje": [0, 100],
+  "umbral_apoyo_academico": 68.25,
+  "criterio_umbral": "Percentil 25 en distribución general (media 74.98, std 9.94)",
+  "variables_predictoras": [
+    "Age",
+    "Grade",
+    "SES_Quartile",
+    "StudyHours",
+    "AttendanceRate",
+    "InternetAccess",
+    "ParentSupport",
+    "Extracurricular",
+    "ParentalEducation"
+  ],
+  "variables_excluidas": {
+    "fuga_de_datos": [
+      "TestScore_Reading",
+      "TestScore_Science",
+      "GPA"
+    ],
+    "eticas_y_sesgo": [
+      "Gender",
+      "Race"
+    ]
+  },
+  "dataset": {
+    "total_registros_train": 8000774,
+    "total_registros_val": 999229,
+    "total_registros_test": 999997,
+    "muestra_entrenamiento": 500000,
+    "muestra_test": 500000,
+    "distribucion_math": {
+      "media": 74.98,
+      "mediana": 75.0,
+      "std": 9.94,
+      "min": 22.58,
+      "max": 100.0,
+      "nulos": 0,
+      "duplicados": 0
+    }
+  },
+  "metricas_validacion": {
+    "linea_base_promedio": {
+      "mae": 7.972,
+      "rmse": 9.953,
+      "r2": -0.0,
+      "pct_dentro_5_pts": 38.235,
+      "pct_dentro_10_pts": 68.13
+    },
+    "regresion_lineal": {
+      "mae": 4.562,
+      "rmse": 5.703,
+      "r2": 0.672,
+      "pct_dentro_5_pts": 61.644,
+      "pct_dentro_10_pts": 92.132
+    },
+    "gradient_boosting": {
+      "mae": 4.559,
+      "rmse": 5.702,
+      "r2": 0.672,
+      "pct_dentro_5_pts": 61.698,
+      "pct_dentro_10_pts": 92.065
+    }
+  },
+  "metricas_test": {
+    "linea_base_promedio": {
+      "mae": 7.968,
+      "rmse": 9.952,
+      "r2": -0.0,
+      "pct_dentro_5_pts": 38.213,
+      "pct_dentro_10_pts": 68.218
+    },
+    "regresion_lineal": {
+      "mae": 4.553,
+      "rmse": 5.695,
+      "r2": 0.672,
+      "pct_dentro_5_pts": 61.736,
+      "pct_dentro_10_pts": 92.222
+    },
+    "gradient_boosting": {
+      "mae": 4.55,
+      "rmse": 5.694,
+      "r2": 0.673,
+      "pct_dentro_5_pts": 61.776,
+      "pct_dentro_10_pts": 92.156,
+      "reduccion_error_vs_base_pct": 42.7,
+      "sesgo_medio": -0.01,
+      "brecha_train_val_pct": 0.4
+    }
+  },
+  "importancia_permutacion_rmse": {
+    "AttendanceRate": 6.645,
+    "StudyHours": 0.166,
+    "Extracurricular": 0.0,
+    "SES_Quartile": 0.0,
+    "InternetAccess": 0.0,
+    "Grade": 0.0,
+    "Age": 0.0,
+    "ParentSupport": 0.0,
+    "ParentalEducation": 0.0
+  },
+  "correlaciones_bivariadas": {
+    "AttendanceRate": 0.815,
+    "TestScore_Reading": 0.7,
+    "TestScore_Science": 0.7,
+    "GPA": 0.683,
+    "StudyHours": 0.456
+  }
+}
