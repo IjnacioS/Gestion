@@ -47,15 +47,15 @@
 ---
 
 ### Lámina 3: Requerimientos (RF / RNF) y Arquitectura CRISP-DM (1:00) — Ignacio Sobarzo
-* **Qué señalar en pantalla:** Tarjeta izquierda (RF), tarjeta derecha (RNF) y luego recorrer con la mano el diagrama de izquierda a derecha (de Datos a Script/Dashboard).
+* **Qué señalar en pantalla:** Tarjeta izquierda (RF1 a RF6), tarjeta derecha (RNF) y al final el diagrama pequeño de abajo.
 * **Qué decir:**
-  > "En esta lámina mostramos cómo cumplimos uno a uno los requerimientos comprometidos en la planificación.
+  > "Profesor, en esta lámina aplicamos la corrección que nos hizo en la entrega anterior. Ahora los **requerimientos funcionales** describen solo **lo que el sistema hace**, y las tareas como limpiar datos o el análisis exploratorio quedaron como actividades del proyecto, no como requerimientos.
   >
-  > En los **Requerimientos Funcionales**: para **RF1 y RF2**, usamos solo 9 señales que el colegio conoce antes de la prueba final, sin fuga de información. En **RF3**, nuestra meta era mejorar al menos un 10% frente al promedio simple, y logramos un **43% menos error**, cuadruplicando el objetivo. Y en **RF4**, hicimos un ajuste justificado: en vez de inventar categorías arbitrarias, el modelo predice la nota continua de 0 a 100 y el simulador la traduce en 3 niveles claros de alerta.
+  > El sistema cumple seis funciones: **RF1** muestra el ranking de factores que más influyen en la nota; **RF2** estima el riesgo alto, medio o bajo de cada estudiante; **RF3** explica cada resultado e incluso simula cuánto subiría la nota si mejora la asistencia; **RF4** muestra todo en un dashboard con vista por curso; **RF5** genera recomendaciones de acompañamiento; y **RF6** permite exportar la nómina priorizada en CSV, que se abre directo en Excel.
   >
-  > En los **Requerimientos No Funcionales**, cumplimos la **Ley 19.628 (RNF1)** con datos 100% anónimos; garantizamos **equidad (RNF2)** eliminando género y etnia, logrando una brecha real de solo **0,03 puntos** frente al límite de 10 puntos; y protegimos los datos crudos con `.gitignore` (**RNF5**).
+  > Las metas de desempeño ahora están donde corresponden, como **requerimientos no funcionales**: pedíamos 10% menos error y logramos **43%**; pedíamos detectar al menos 70% de los alumnos en riesgo y detectamos el **91%** sumando tutoría y seguimiento. Además tenemos **0% de datos faltantes**, el dashboard responde en **menos de un segundo** y cumplimos privacidad con la **Ley 19.628**, equidad con una brecha de solo **0,03 puntos** y seguridad con `.gitignore`.
   >
-  > Abajo ven toda la arquitectura bajo **CRISP-DM**, desde los archivos CSV protegidos hasta el script automático y el Dashboard web. Ahora le doy el pase a **Diego**, quien explicará el detalle técnico."
+  > Abajo ven el flujo completo bajo **CRISP-DM**. Le doy el pase a **Diego** para el detalle técnico."
 
 ---
 
@@ -147,14 +147,17 @@
 
 ### A. Perspectiva del Cliente (UTP, Dirección y Orientación)
 
-1. **¿Por qué entregaron una nota de 0 a 100 con 3 alertas en vez de solo clasificar en "Bajo / Medio / Alto" (RF4)?**
-   > **Respuesta:** Porque el dataset original traía puntajes numéricos continuos, no categorías oficiales. Inventar cortes arbitrarios para entrenar un clasificador habría distorsionado los datos y perdido información. Es mucho más preciso predecir la nota exacta (0–100) y luego traducirla en **3 niveles prácticos de acción para UTP**: *Incorporar a tutoría* (< 68 pts), *Hacer seguimiento* (zona límite) y *Sin apoyo por ahora*.
+1. **¿Por qué el modelo predice una nota de 0 a 100 si RF2 pide riesgo alto, medio o bajo?**
+   > **Respuesta:** Porque el dataset trae puntajes numéricos, no categorías oficiales. Si inventáramos cortes antes de entrenar, perderíamos información. Por eso el modelo predice la nota exacta y después el sistema la traduce en los **3 niveles de RF2**: riesgo alto = *Incorporar a tutoría* (< 68 pts), riesgo medio = *Hacer seguimiento* (zona límite) y riesgo bajo = *Sin apoyo por ahora*. Así cumplimos el requerimiento sin perder precisión.
+
+1b. **¿Por qué cambiaron los requerimientos respecto a la entrega anterior?**
+   > **Respuesta:** Por su retroalimentación, profesor. Antes mezclábamos actividades del equipo, como limpiar datos o hacer el EDA, con funciones del sistema. Ahora los RF son solo lo que el sistema hace (ranking de factores, riesgo, explicación, dashboard, recomendaciones y exportación) y las metas de error, detección, calidad de datos y tiempo de respuesta pasaron a ser RNF.
 
 2. **El caso menciona bienestar emocional, pero el modelo no lo mide. ¿Cómo justifican esa ausencia ante Orientación?**
    > **Respuesta:** Esa brecha la anticipamos desde la planificación en EP3 como un riesgo y, al confirmarla en el EDA, la registramos formalmente en GitHub (**Issue #14**). En lugar de inventar una variable falsa, aplicamos nuestra mitigación: dejamos una advertencia explícita en el Dashboard (*"Lo que esta herramienta no hace"*) para que Orientación sepa ese límite y propusimos incorporar una encuesta breve semestral de bienestar en la siguiente etapa.
 
-3. **¿Cómo garantizan privacidad (RNF1) y que el modelo no discrimina (RNF2)?**
-   > **Respuesta:** Para **RNF1 (Ley 19.628)** trabajamos únicamente con registros anónimos sin RUT ni nombres, y mediante **RNF5** bloqueamos los CSV crudos con `.gitignore`. Para **RNF2 (equidad)** excluimos género y etnia del modelo y medimos que la diferencia promedio de error según escolaridad de los padres es de apenas **0,03 puntos**, muy por debajo del límite de 10 puntos fijado en EP3.
+3. **¿Cómo garantizan privacidad y que el modelo no discrimina?**
+   > **Respuesta:** Son requerimientos no funcionales de ética. Para la **privacidad (Ley 19.628)** trabajamos solo con registros anónimos sin RUT ni nombres, y bloqueamos los CSV crudos con `.gitignore`. Para la **equidad** excluimos género y etnia y medimos que la diferencia de error según escolaridad de los padres es de apenas **0,03 puntos**, muy por debajo del límite de 10 puntos.
 
 4. **Si la asistencia es lo que más pesa, ¿basta con obligar a los estudiantes a ir a clases para subir sus notas?**
    > **Respuesta:** No, porque **correlación no es causalidad**. Una baja asistencia es la mejor señal temprana de riesgo, pero suele ser síntoma de problemas de salud, familiares o de desmotivación. El sistema no busca sancionar la inasistencia, sino avisar a tiempo a UTP y Orientación para acompañar al estudiante.
@@ -167,7 +170,7 @@
    > **Respuesta:** Para evitar **fuga de datos (*data leakage*)**. Esas calificaciones se obtienen al final del mismo semestre que matemáticas. Si las usáramos, el modelo parecería casi perfecto en el papel, pero sería inútil a mitad de año porque TI y UTP aún no tendrían esas notas finales disponibles.
 
 6. **¿Por qué ganó Gradient Boosting y no Regresión Lineal?**
-   > **Respuesta:** Porque **Gradient Boosting** logró el menor error en los 500.000 casos de prueba: redujo el error un **43%** frente a la línea base (cuadruplicando la meta de 10% en RF3), logró un error habitual de **± 4,5 puntos** (MAE), acertó en **9 de cada 10 casos** dentro de ± 10 puntos y demostró cero sobreajuste (solo 0,4% de diferencia entre entrenamiento y validación).
+   > **Respuesta:** Porque **Gradient Boosting** logró el menor error en los 500.000 casos de prueba: redujo el error un **43%** frente a la línea base (cuadruplicando la meta de desempeño de 10%), logró un error habitual de **± 4,5 puntos** (MAE), acertó en **9 de cada 10 casos** dentro de ± 10 puntos y demostró cero sobreajuste (solo 0,4% de diferencia entre entrenamiento y validación).
 
 7. **¿Cómo validaron usar 500.000 filas de los 8 millones de entrenamiento y cómo sabe TI cuándo reentrenar en producción?**
    > **Respuesta:** Frente al problema de memoria local (**Issue #12**), trazamos la curva de aprendizaje y comprobamos que a partir de 200.000 filas el error ya se estabiliza por completo; usar 500.000 mantuvo intacta la precisión y redujo más de 90% el tiempo de cómputo. En producción, tanto el script como el Dashboard tienen monitoreo automático de **drift**: cuando llegan las notas reales, si el error RMSE sube más de **20%** respecto a la referencia, el sistema emite una alerta roja para que TI reentrene el modelo.
