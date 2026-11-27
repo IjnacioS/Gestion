@@ -34,22 +34,22 @@ goto MENU
 cls
 echo.
 echo  ====================================================================
-echo     INICIANDO DASHBOARD INTERACTIVO (http://localhost:8501)
+echo     INICIANDO DASHBOARD INTERACTIVO - http://localhost:8501
 echo  ====================================================================
 echo.
 echo   [###-------] 30%% - Comprobando librerias instaladas...
 python -c "import streamlit, pandas, sklearn, plotly, joblib" >nul 2>&1
-if %errorlevel% neq 0 (
-    echo         Faltan librerias. Instalando automaticamente...
-    echo.
-    python -m pip install -r requirements.txt --disable-pip-version-check
-    if %errorlevel% neq 0 (
-        pip install -r requirements.txt --disable-pip-version-check
-    )
-) else (
-    echo         OK - Librerias listas (inicio rapido).
-)
+if errorlevel 1 goto INSTALAR_DEPS
+echo         OK - Librerias listas. Inicio rapido.
+goto VERIFICAR_MODELO
 
+:INSTALAR_DEPS
+echo         Faltan librerias. Instalando automaticamente...
+echo.
+python -m pip install -r requirements.txt --disable-pip-version-check
+if errorlevel 1 pip install -r requirements.txt --disable-pip-version-check
+
+:VERIFICAR_MODELO
 echo.
 echo   [######----] 60%% - Verificando modelo y configuracion...
 if not exist "models\modelo_matematicas.joblib" (
@@ -59,13 +59,10 @@ if not exist "models\modelo_matematicas.joblib" (
     goto MENU
 )
 
-:: Desactivar permanentemente el mensaje de Email de Streamlit en este PC
 if not exist "%USERPROFILE%\.streamlit" mkdir "%USERPROFILE%\.streamlit"
 if not exist "%USERPROFILE%\.streamlit\credentials.toml" (
-    (
-        echo [general]
-        echo email = ""
-    ) > "%USERPROFILE%\.streamlit\credentials.toml"
+    echo [general]> "%USERPROFILE%\.streamlit\credentials.toml"
+    echo email = "">> "%USERPROFILE%\.streamlit\credentials.toml"
 )
 echo         OK - Modelo y credenciales listos.
 
@@ -98,7 +95,7 @@ goto MENU
 cls
 echo.
 echo  ====================================================================
-echo     DEMO SCRIPT AUTOMATICO POR LOTES (CLI)
+echo     DEMO SCRIPT AUTOMATICO POR LOTES - CLI
 echo  ====================================================================
 echo.
 if not exist "data\ejemplo_curso_demo.csv" (
