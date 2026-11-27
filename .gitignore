@@ -36,3 +36,8 @@ tmp/
 # Salidas de inferencia generadas dinámicamente
 salidas/*.csv
 !salidas/.gitkeep
+
+# Archivos y configuraciones internas de agentes y contexto de trabajo
+.agents/
+docs/contexto/
+
