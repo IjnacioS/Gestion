@@ -1,6 +1,11 @@
-Grade,Age,SocioeconomicStatus,StudyHours,AttendanceRate,ParentalSupport,ParentalEducation,InternetAccess,Extracurricular
-10,15,Medium,12.5,92.0,High,College,Yes,Yes
-11,16,High,18.0,96.5,High,Graduate,Yes,No
-12,17,Low,5.0,62.0,Low,High School,No,No
-10,15,Medium,10.0,85.0,Medium,College,Yes,Yes
-11,16,Low,6.5,71.0,Low,High School,No,No
+Estudiante,Age,Grade,SES_Quartile,StudyHours,AttendanceRate,InternetAccess,ParentSupport,Extracurricular,ParentalEducation
+Estudiante_1,14,9,3,1.4097001964661453,0.9640219547720724,1,0,1,SomeCollege
+Estudiante_2,17,12,4,1.1122956721659738,0.8829884625545044,1,1,0,SomeCollege
+Estudiante_3,17,12,2,1.214926880713133,0.8644014351070896,1,1,1,HS
+Estudiante_4,15,10,4,0.1552578998674678,0.8877913579402438,1,1,0,SomeCollege
+Estudiante_5,18,12,3,0.9087760429256676,0.9332012137628952,1,0,1,HS
+Estudiante_6,18,12,1,1.1624977750687326,0.9641089412182304,1,0,0,<HS
+Estudiante_7,15,10,4,1.3875985561487094,0.8791580826244862,1,1,0,Bachelors+
+Estudiante_8,16,11,1,1.4935883160055634,0.8523180915094052,1,1,1,HS
+Estudiante_9,16,11,1,1.327590020003959,0.9251546753841048,1,0,0,<HS
+Estudiante_10,14,9,1,1.3437002455527804,0.8836449607604753,1,0,1,<HS
