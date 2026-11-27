@@ -37,31 +37,46 @@ echo  ====================================================================
 echo     INICIANDO DASHBOARD INTERACTIVO (http://localhost:8501)
 echo  ====================================================================
 echo.
-echo   [1/3] Verificando librerias de Python...
-echo         (En un PC nuevo esto puede tardar 1 a 2 minutos)
-python -m pip install -r requirements.txt --quiet --disable-pip-version-check
+echo   [###-------] 30%% - Comprobando librerias instaladas...
+python -c "import streamlit, pandas, sklearn, plotly, joblib" >nul 2>&1
 if %errorlevel% neq 0 (
-    pip install -r requirements.txt --quiet --disable-pip-version-check
+    echo         Faltan librerias. Instalando automaticamente...
+    echo.
+    python -m pip install -r requirements.txt --disable-pip-version-check
+    if %errorlevel% neq 0 (
+        pip install -r requirements.txt --disable-pip-version-check
+    )
+) else (
+    echo         OK - Librerias listas (inicio rapido).
 )
 
 echo.
-echo   [2/3] Verificando modelo predictivo...
+echo   [######----] 60%% - Verificando modelo y configuracion...
 if not exist "models\modelo_matematicas.joblib" (
     echo   [ERROR] No se encontro models\modelo_matematicas.joblib
     echo.
     pause
     goto MENU
 )
-echo         OK - Modelo detectado correctamente.
+
+:: Desactivar permanentemente el mensaje de Email de Streamlit en este PC
+if not exist "%USERPROFILE%\.streamlit" mkdir "%USERPROFILE%\.streamlit"
+if not exist "%USERPROFILE%\.streamlit\credentials.toml" (
+    (
+        echo [general]
+        echo email = ""
+    ) > "%USERPROFILE%\.streamlit\credentials.toml"
+)
+echo         OK - Modelo y credenciales listos.
 
 echo.
-echo   [3/3] Iniciando servidor web...
-echo         * El navegador se abrira solo en http://localhost:8501
+echo   [##########] 100%% - Abriendo Dashboard en el navegador...
+echo         * URL: http://localhost:8501
 echo         * Para DETENER el Dashboard, vuelve aqui y presiona Ctrl+C
 echo  ====================================================================
 echo.
 set STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
-python -m streamlit run dashboard/app.py --browser.gatherUsageStats=false --server.port 8501
+python -m streamlit run dashboard/app.py --server.headless=false --browser.gatherUsageStats=false --server.port 8501
 echo.
 echo   [i] Dashboard detenido.
 pause
