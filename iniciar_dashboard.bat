@@ -1,4 +1,5 @@
 @echo off
+cd /d "%~dp0"
 title Sistema de Alerta Temprana - SCY1102
 echo ========================================================
 echo    INICIANDO ENTORNO Y DASHBOARD EN CLASES
@@ -7,10 +8,11 @@ echo ========================================================
 echo.
 
 echo [1/3] Verificando instalacion de librerias necesarias...
-pip install -r requirements.txt --quiet
+echo (Si es la primera vez en este PC, puede tardar 1 a 2 minutos)
+python -m pip install -r requirements.txt --quiet --disable-pip-version-check
 if %errorlevel% neq 0 (
-    echo [AVISO] Fallo pip directo, intentando con python -m pip...
-    python -m pip install -r requirements.txt --quiet
+    echo [AVISO] Intentando con pip directo...
+    pip install -r requirements.txt --quiet --disable-pip-version-check
 )
 
 echo.
@@ -29,5 +31,6 @@ echo Presiona Ctrl+C en esta ventana cuando quieras cerrar el Dashboard.
 echo ========================================================
 echo.
 
-python -m streamlit run dashboard/app.py
+set STREAMLIT_BROWSER_GATHER_USAGE_STATS=false
+python -m streamlit run dashboard/app.py --browser.gatherUsageStats=false
 pause
