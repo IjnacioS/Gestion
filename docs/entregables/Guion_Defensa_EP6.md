@@ -1,70 +1,69 @@
-# Guion de Defensa Ejecutiva y Banco de Preguntas Críticas — EP6 (SCY1102)
+# Guion de Defensa Ejecutiva y Banco de Preguntas — EP6 (SCY1102)
 
 **Proyecto:** Caso 1 — Sistema de Alerta Temprana para el Rendimiento Académico en Matemáticas  
 **Asignatura:** SCY1102 Gestión de Proyectos de Datos (Duoc UC)  
 **Docente:** Michael Palomino B.  
-**Duración Total Exacta:** 10 minutos (600 segundos) + Ronda de preguntas del jurado  
+**Duración Total:** 10 minutos exactos + ronda de preguntas  
 **Equipo Expositor:** Ignacio Sobarzo · Diego Yañez · Felipe Espinoza  
-**Presentación Asociada:** `docs/entregables/Presentacion_EP6_Caso1_Matematicas.pptx` (11 láminas)
+**Presentación:** `docs/entregables/Presentacion_EP6_Caso1_Matematicas.pptx` (10 láminas limpias y directas)
 
 ---
 
-## 1. Reparto Exacto para 10 Minutos (Cronograma por Lámina)
+## 1. Reparto Exacto para 10 Minutos (Lámina por Lámina)
 
-| Lámina | Tiempo | Acumulado | Expositor | Mensaje Clave y Conexión con el Plan EP3 |
+| Lámina | Tiempo | Acumulado | Expositor | Qué decir (en simple y directo) |
 | :---: | :---: | :---: | :--- | :--- |
-| **1. Portada** | 0:25 | 0:25 | Ignacio Sobarzo | Saludo al docente Michael Palomino B. y al jurado; presentación del equipo y propósito: transformar datos escolares en apoyo preventivo en matemáticas. |
-| **2. Contexto y Actores EP3** | 0:50 | 1:15 | Ignacio Sobarzo | Explicar el problema de detectar tarde los bajos resultados y cómo la solución sirve a los 5 actores definidos en EP3: **Dirección (Sponsor), UTP (Contraparte), Docentes de matemáticas, Orientación y TI**. |
-| **3. Requerimientos RF/RNF** | 0:55 | 2:10 | Ignacio Sobarzo | Demostrar el cumplimiento del Plan EP3: **RF3** (meta $\ge 10\%$ superada con **43% menos error**), **RF4** (puntaje continuo + 3 niveles de alerta), **RNF1** (Ley 19.628), **RNF2** (brecha de solo 0,03 pts $\le 10$ pts) y **RNF5** (`.gitignore`). |
-| **4. Técnica 1: Datos y Ética** | 0:55 | 3:05 | Diego Yañez | Explicar la base de 10 millones de registros sin datos faltantes y las dos exclusiones clave: notas finales (`GPA`, lectura, ciencias) por fuga de información y género/etnia por equidad. |
-| **5. Técnica 2: Resultados** | 1:00 | 4:05 | Diego Yañez | Explicar con números claros que **Gradient Boosting** reduce el error un **43%**, se equivoca en promedio solo **$\pm 4,5$ puntos**, acierta en **9 de cada 10 estudiantes ($\pm 10$ pts)** y mantiene **0,03 puntos** de brecha por educación parental. |
-| **6. Técnica 3: Factores y CLI** | 1:00 | 5:05 | Diego Yañez | Destacar que la **asistencia a clases** es la señal determinante, cómo opera el script por lotes (E5) con los **3 niveles de recomendación (RF4)** y la alerta automática a TI si el error sube más de **20%**. |
-| **7. Demo: Dashboard (E6)** | 1:20 | 6:25 | Diego Yañez | Mostrar las capturas reales del Dashboard Streamlit y guiar los 3 pasos de la demo en vivo: (1) Vista UTP/Dirección, (2) Simulador individual con 3 niveles de alerta y (3) Nómina CSV de curso completo. |
-| **8. Gestión 1: EP3 ↔ GitHub** | 0:50 | 7:15 | Felipe Espinoza | Mostrar la tabla de trazabilidad que une los **4 Milestones de GitHub (M1–M4)** con los **Hitos H1–H6** y **Entregables E1–E7** de EP3, respaldada por las capturas reales del repositorio. |
-| **9. Gestión 2: Semáforo** | 0:50 | 8:05 | Felipe Espinoza | Presentar el semáforo global en **VERDE**: 100% de los entregables E1 a E7 construidos, 14 issues documentados y las 3 desviaciones resueltas a tiempo. |
-| **10. Gestión 3: Desviaciones y R4** | 1:05 | 9:10 | Felipe Espinoza | Explicar las 3 desviaciones reales (#12 muestra 500k de 8M, #13 consolidación de 3 notebooks en 2) y destacar cómo el **Issue #14 activó el Riesgo R4 anticipado en EP3** (falta de bienestar emocional), junto con la mitigación de R2, R3 y R7. |
-| **11. Valor y Próximos Pasos** | 0:50 | **10:00** | Ignacio Sobarzo | Cierre ejecutivo: valor para Dirección, UTP, Docentes, Orientación y TI; rigor ético (asociación $\ne$ causalidad) y los 3 pasos para el piloto semestral. |
+| **1. Portada** | 0:25 | 0:25 | Ignacio Sobarzo | Saludar al profe Michael Palomino B. y al jurado. Presentar al equipo y el objetivo: anticipar qué estudiantes necesitan tutoría en matemáticas antes de que termine el semestre. |
+| **2. Problema y Actores** | 0:55 | 1:20 | Ignacio Sobarzo | Explicar que hoy las malas notas se ven muy tarde. Mostrar que la solución ayuda a **Dirección, UTP, Docentes, Orientación y TI**, priorizando al 25% con mayor riesgo (puntaje bajo 68 puntos). |
+| **3. Requerimientos (RF/RNF) y Flujo** | 1:00 | 2:20 | Ignacio Sobarzo | Mostrar que cumplimos todo el plan de EP3: **RF1–RF2** (solo 9 datos previos), **RF3** (meta ≥ 10%, logramos **43% menos error**), **RF4** (nota continua + 3 niveles de alerta), **RNF1** (datos anónimos Ley 19.628), **RNF2** (brecha de solo 0,03 pts) y **RNF5** (`.gitignore`). Recorrer brevemente el flujo CRISP-DM. |
+| **4. Datos, Ética y Variables** | 1:00 | 3:20 | Diego Yañez | Explicar que la base tiene **10 millones de filas** (8M train, 1M val, 1M test) sin datos vacíos, y validamos una muestra de **500.000 estudiantes**. Destacar qué excluimos: notas finales (`GPA`, lectura, ciencias) por **fuga de datos**, y género/etnia por **ética**. Nombrar las 9 señales usadas. |
+| **5. Resultados del Modelo** | 1:00 | 4:20 | Diego Yañez | Explicar el gráfico en fácil: **Gradient Boosting** ganó porque baja el error un **43%** frente al promedio simple, se equivoca en promedio solo **± 4,5 puntos**, acierta en **9 de cada 10 alumnos** dentro de ± 10 puntos y tiene una brecha de equidad de apenas **0,03 puntos**. |
+| **6. Hallazgo y Automatización** | 1:00 | 5:20 | Diego Yañez | Contar el gran hallazgo: **la asistencia a clases es lo que más pesa** (si la quitamos, el error sube más de 6,6 pts), mientras el origen familiar casi no afecta. Explicar cómo el script automático procesa cursos completos en segundos y avisa a TI si el error sube más de **20%** (drift). |
+| **7. Demo en Vivo (Dashboard)** | 1:30 | 6:50 | Diego Yañez | Mostrar el Dashboard en Streamlit en 3 pasos rápidos: (1) Resumen ejecutivo, (2) Simulador moviendo la asistencia para ver cómo cambia el semáforo de 3 niveles, y (3) Subir una nómina CSV de curso y descargar la lista priorizada. |
+| **8. Seguimiento en GitHub** | 0:55 | 7:45 | Felipe Espinoza | Mostrar la tabla de las 4 etapas (Milestones M1 a M4) con todos los entregables listos y las capturas reales del tablero y los issues en GitHub. |
+| **9. Avance y 3 Desviaciones** | 1:15 | 9:00 | Felipe Espinoza | Mostrar el semáforo global en **VERDE** (100% completado) y contar brevemente las 3 desviaciones reales que resolvimos: **#12** (muestra 500k de 8M por memoria), **#13** (unificar 3 notebooks duplicados en 2 limpios) y **#14** (falta de bienestar emocional, riesgo que ya habíamos previsto en EP3 y transparentamos en el sistema). |
+| **10. Valor y Próximos Pasos** | 1:00 | **10:00** | Ignacio Sobarzo | Cerrar destacando el impacto: costo **$0 en licencias**, uso 100% formativo (nunca sancionador, correlación ≠ causalidad) y los 3 pasos para el colegio: conectar asistencia mensual, sumar encuesta breve de bienestar y hacer el piloto semestral con UTP. |
 
 ---
 
-## 2. Banco de 10 Preguntas Difíciles del Jurado y Respuestas Modelo
+## 2. Respuestas Rápidas a las 10 Preguntas Más Probables del Jurado
 
-### A. Perspectiva del Cliente / UTP y Orientación (4 Preguntas)
+### A. Preguntas del Cliente (UTP, Dirección y Orientación)
 
-#### 1. En el Plan de EP3 el requerimiento RF4 hablaba de clasificar el rendimiento, pero ustedes entregaron un puntaje continuo de 0 a 100 con 3 niveles de alerta. ¿Por qué hicieron ese ajuste?
-**Respuesta:** Fue una decisión técnica y pedagógica acordada para proteger la validez del sistema para **UTP**. El dataset original no traía categorías oficiales ("bajo/medio/alto"), por lo que inventar cortes arbitrarios durante el entrenamiento habría distorsionado la información. En cambio, predecimos el puntaje exacto de 0 a 100 y en el simulador lo traducimos en **3 niveles de acción claros para UTP y Orientación** usando el percentil 25 (68 puntos) y el margen de error: **Incorporar a tutoría** (bajo 68 pts), **Hacer seguimiento** (sobre 68 pts pero dentro del margen de riesgo) y **Sin apoyo por ahora**.
+1. **¿Por qué entregaron una nota de 0 a 100 con 3 alertas en vez de solo clasificar en "Bajo / Medio / Alto" (RF4)?**
+   > Porque el dataset original traía notas numéricas, no etiquetas oficiales. Inventar categorías para entrenar distorsiona los datos. Es mejor predecir la nota exacta (0–100) y luego traducirla en **3 niveles de acción claros para UTP**: *Incorporar a tutoría* (< 68 pts), *Hacer seguimiento* (zona límite) y *Sin apoyo por ahora*.
 
-#### 2. El caso menciona "bienestar emocional", pero su sistema no lo mide. ¿Cómo justifican esa ausencia ante Orientación?
-**Respuesta:** Esa brecha la anticipamos desde la planificación en EP3 como nuestro **Riesgo R4** y, al confirmarla en la exploración de datos, la registramos formalmente en GitHub como la **Desviación #14**. En lugar de inventar una variable falsa, aplicamos el plan de mitigación de R4: dejamos una advertencia explícita en el Dashboard ("Lo que esta herramienta no hace") para que Orientación sepa que el modelo evalúa hábitos escolares observables, y propusimos incorporar una encuesta breve semestral de bienestar estudiantil en la siguiente iteración.
+2. **El caso menciona bienestar emocional, pero el modelo no lo tiene. ¿Por qué?**
+   > Porque los archivos CSV entregados no traían esa columna. Ya lo habíamos anticipado como riesgo en la planificación (EP3) y lo registramos en GitHub (**Issue #14**). En vez de inventar datos, dejamos un aviso claro en el Dashboard para que Orientación sepa ese límite y propusimos agregar una encuesta breve el próximo semestre.
 
-#### 3. ¿Cómo garantizan que el sistema cumple los requerimientos de privacidad (RNF1) y equidad (RNF2) comprometidos en EP3?
-**Respuesta:** Para **RNF1 (Ley 19.628)** trabajamos únicamente con registros anonimizados sin RUT ni datos sensibles en el modelo, y mediante **RNF5** bloqueamos en `.gitignore` cualquier subida de datos crudos a GitHub. Para **RNF2 (equidad $\le 10$ puntos de brecha)** excluimos género y etnia del entrenamiento y comprobamos empíricamente que la diferencia promedio entre grupos de distinta escolaridad parental es de apenas **0,03 puntos**, muy por debajo del máximo de 10 puntos exigido en EP3.
+3. **¿Cómo cuidan la privacidad y que el modelo no discrimine?**
+   > Cumplimos la **Ley 19.628 (RNF1)** usando solo datos anónimos sin RUT ni nombres, y bloqueamos los CSV con `.gitignore` (**RNF5**). Para equidad (**RNF2**), eliminamos género y etnia del modelo y comprobamos que la diferencia por nivel educativo de los padres es de apenas **0,03 puntos** (el límite permitido era 10 puntos).
 
-#### 4. Si la asistencia es lo que más pesa, ¿basta con exigir asistencia obligatoria para que suban las notas de matemáticas?
-**Respuesta:** No, y así mitigamos explícitamente los **Riesgos R3 (mal uso punitivo) y R7 (confundir correlación con causalidad)** de nuestro plan EP3. Una caída en la asistencia es la mejor **señal de alerta temprana** (correlación de 0,815), pero suele ser síntoma de problemas familiares, de salud o desmotivación. El sistema no busca sancionar la inasistencia, sino avisarle a tiempo a UTP y Orientación para que apoyen al estudiante antes de la prueba.
-
----
-
-### B. Perspectiva del Gerente de Informática / TI (3 Preguntas)
-
-#### 5. ¿Por qué descartaron las notas de lectura, ciencias y el promedio general (`GPA`) si tenían altísima relación con matemáticas?
-**Respuesta:** Para cumplir con **RF1/RF2** y evitar la **fuga de información (*data leakage*)**. Esas calificaciones se obtienen al final del mismo período que la prueba de matemáticas. Si las usáramos, el modelo parecería casi perfecto en el papel, pero no serviría como alerta temprana a mitad de semestre porque TI y UTP aún no tendrían esas notas finales disponibles.
-
-#### 6. ¿Qué tan superior fue el modelo elegido frente a la meta RF3 de EP3 y por qué eligieron Gradient Boosting sobre Regresión Lineal?
-**Respuesta:** En EP3 comprometimos en **RF3** mejorar al menos un **10%** respecto a la línea base (que tenía un error RMSE de 9,95 puntos). Nuestro modelo **Gradient Boosting** redujo el error en un **42,7% (~43%)**, bajando el RMSE a **5,69 puntos** y el error habitual (MAE) a **$\pm 4,5$ puntos**, acertando en **9 de cada 10 estudiantes** dentro de $\pm 10$ puntos. Elegimos Gradient Boosting porque logró el menor error en los 500.000 casos de prueba sin ningún sobreajuste (solo 0,4% de diferencia entre entrenamiento y validación), manteniendo la Regresión Lineal como respaldo comparativo en la pestaña técnica.
-
-#### 7. ¿Cómo validaron el muestreo de 500.000 filas (Desviación #12) y cómo sabe TI cuándo debe reentrenar el modelo en producción?
-**Respuesta:** Frente a los 8 millones de filas de entrenamiento (Issue #12), trazamos la **curva de aprendizaje** y comprobamos que a partir de 200.000 registros el error ya se estabiliza por completo; usar 500.000 filas mantuvo intacta la precisión y redujo en más de 90% el tiempo de cómputo. Para producción, tanto el script por lotes (E5) como el Dashboard (E6) incluyen monitoreo automático de **estabilidad (*drift*)**: cuando se cargan los puntajes reales del semestre, si el error RMSE sube más de un **20%** respecto a la referencia, el sistema emite una alerta roja para que TI reentrene el modelo.
+4. **Si la asistencia es lo que más pesa, ¿basta con obligar a los niños a ir a clases para que suban las notas?**
+   > No, porque **correlación no es causalidad**. La falta de asistencia es una excelente señal de alerta temprana, pero detrás suele haber problemas de salud, familia o desmotivación. El sistema sirve para que UTP y Orientación apoyen a tiempo, nunca para castigar.
 
 ---
 
-### C. Perspectiva del Gerente General / Dirección — Sponsor (3 Preguntas)
+### B. Preguntas del Gerente de Informática (TI)
 
-#### 8. ¿Cómo se conectan los 4 Milestones de su repositorio GitHub con los Hitos H1–H6 y Entregables E1–E7 que aprobaron en el Plan de EP3?
-**Respuesta:** Mantuvimos trazabilidad uno a uno: el **Milestone M1** cerró los hitos **H1 y H2** (entregables **E1** de alcance y **E2** de análisis exploratorio); **M2** cerró **H3 y H4** (**E3** flujo de preparación y **E4** modelo predictivo); **M3** cerró **H5** (**E5** script de automatización y **E6** Dashboard interactivo); y **M4** consolida el hito **H6** con el entregable **E7** (Informe EP5 y esta Defensa EP6), completando el 100% de los productos comprometidos.
+5. **¿Por qué sacaron las notas de lectura, ciencias y el promedio (`GPA`) si ayudaban a predecir mejor?**
+   > Por **fuga de datos (*data leakage*)**. Esas notas se conocen recién al terminar el semestre, al mismo tiempo que matemáticas. Si las dejábamos, el modelo haría trampa en el papel pero sería inútil a mitad de año.
 
-#### 9. Tuvieron 3 desviaciones registradas en GitHub. ¿Qué demuestra que su control de proyecto fue efectivo y no improvisado?
-**Respuesta:** Primero, que cada desviación tuvo una acción correctiva medible y cerrada en GitHub (#12 muestreo validado, #13 unificación de 3 notebooks duplicados en 2 oficiales con respaldo en `archive/`, y #14 falta de variable emocional). Y segundo, que la **Desviación #14** estaba prevista desde EP3 como el **Riesgo R4**, lo que demuestra que nuestra matriz de riesgos no fue un trámite documental, sino una herramienta viva que guio las decisiones del equipo durante toda la ejecución.
+6. **¿Por qué ganó Gradient Boosting y no Regresión Lineal?**
+   > Porque **Gradient Boosting** logró el menor error en los 500.000 casos de prueba: bajó el error un **43%** frente al promedio simple (superando la meta de 10% en RF3), con un error habitual de **± 4,5 puntos** y sin sobreajuste (solo 0,4% de diferencia entre entrenamiento y validación).
 
-#### 10. Como Dirección del colegio (Sponsor), ¿qué inversión necesitamos para poner esto en marcha el próximo semestre y cuál es el beneficio concreto?
-**Respuesta:** El costo de licencias es **cero**, porque toda la solución (E3 a E6) funciona sobre tecnologías abiertas en Python y Streamlit que TI puede alojar en infraestructura actual del colegio. Solo requerimos tres acuerdos operativos: (1) que TI exporte mensualmente la planilla de asistencia del libro de clases al script automático; (2) que UTP utilice la nómina de alerta para asignar los cupos de tutoría al 25% prioritario (bajo 68 puntos); y (3) que Orientación incorpore la encuesta breve de bienestar emocional (mitigación final de R4).
+7. **¿Por qué usaron 500.000 filas si la base tenía 8 millones de entrenamiento? ¿Y cómo detectan si el modelo se degrada?**
+   > Con 8 millones de filas el computador se quedaba sin memoria (**Issue #12**). Probamos la curva de aprendizaje y vimos que desde 200.000 filas el error ya no mejora; con 500.000 logramos exactamente la misma precisión en un 90% menos de tiempo. Además, el script y el Dashboard revisan automáticamente si el error sube más de **20%** al llegar las notas reales (*drift*) y avisan a TI para reentrenar.
+
+---
+
+### C. Preguntas de Gestión y Dirección (Gerente General / Sponsor)
+
+8. **¿Cómo controlaron el avance del proyecto durante la ejecución?**
+   > Organizamos el repositorio en GitHub con **4 Milestones** alineados a CRISP-DM (Comprensión/EDA, Modelado, Automatización/Dashboard y Cierre) y **14 Issues** trazables, logrando cerrar el 100% de las entregas planificadas con semáforo en **VERDE**.
+
+9. **Tuvieron 3 desviaciones en GitHub. ¿Eso significa que el proyecto se desordenó?**
+   > Al contrario: demuestra control real. Cada problema se registró, se corrigió y se cerró sin atrasar las fechas: **#12** (muestra 500k validada), **#13** (ordenar 3 notebooks duplicados en 2 oficiales) y **#14** (transparentar la falta de bienestar emocional).
+
+10. **¿Cuánto cuesta implementar esto en el colegio el próximo semestre?**
+    > **Cero pesos en licencias**, porque corre en Python y Streamlit (software libre) sobre los servidores que el colegio ya tiene. Solo hace falta exportar la asistencia mensual desde el libro de clases y coordinar los cupos de tutoría con UTP.
